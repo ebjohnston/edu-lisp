@@ -18,20 +18,20 @@
 ;; =============================================================================
 
 ( defun remove-negatives ( lst )
-	( labels
-		( ( inner-remove-negatives ( inner-lst )
-			( cond
-				( ( null inner-lst ) ( values ) )
-				( ( and ( null ( rest inner-lst ) )
-				  ( < ( first inner-lst ) 0 ) ) NIL )
-				( ( < ( first inner-lst ) 0 )
-				  ( inner-remove-negatives ( rest inner-lst ) ) )
-				( T ( cons ( first inner-lst )
-				  ( remove-negatives ( rest inner-lst ) ) ) )
-			)
-		) )
-		( if ( null lst ) NIL ( inner-remove-negatives lst ) )
-	)
+  ( labels
+    ( ( inner-remove-negatives ( inner-lst )
+      ( cond
+        ( ( null inner-lst ) ( values ) )
+        ( ( and ( null ( rest inner-lst ) )
+          ( < ( first inner-lst ) 0 ) ) NIL )
+        ( ( < ( first inner-lst ) 0 )
+          ( inner-remove-negatives ( rest inner-lst ) ) )
+        ( T ( cons ( first inner-lst )
+          ( remove-negatives ( rest inner-lst ) ) ) )
+      )
+    ) )
+    ( if ( null lst ) NIL ( inner-remove-negatives lst ) )
+  )
 )
 
 ;; test plan for remove-negatives:

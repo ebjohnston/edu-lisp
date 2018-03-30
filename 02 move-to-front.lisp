@@ -20,34 +20,34 @@
 ;; =============================================================================
 
 ( defun move-to-front ( wrd lst )
-	( labels
-		(
-			( is-found ( search-wrd search-lst )
-				( cond
-					( ( null search-lst ) NIL )
-					( ( eq search-wrd ( first search-lst ) ) T )
-					( T ( is-found search-wrd ( rest search-lst ) ) )
-				)
-			)
-			( remove-wrd ( removed-wrd remove-lst )
-				( cond
-					( ( and ( null ( rest remove-lst ) )
-					  ( eq removed-wrd ( first remove-lst ) ) ) ( values ) )
-					( ( null ( rest remove-lst ) ) ( first remove-lst ) )
-					( ( eq removed-wrd ( first remove-lst ) )
-					  ( rest remove-lst ) )
-					( T ( cons ( first remove-lst )
-					  ( remove-wrd removed-wrd ( rest remove-lst ) ) ) )
-				)
-			)
-		)
-		( cond
-			( ( null lst ) ( list wrd ) )
-			( ( not ( is-found wrd lst ) ) ( cons wrd lst ) )
-			( ( eq wrd ( first lst ) ) lst )
-			( T ( cons wrd ( remove-wrd wrd lst ) ) )
-		)
-	)
+  ( labels
+    (
+      ( is-found ( search-wrd search-lst )
+        ( cond
+          ( ( null search-lst ) NIL )
+          ( ( eq search-wrd ( first search-lst ) ) T )
+          ( T ( is-found search-wrd ( rest search-lst ) ) )
+        )
+      )
+      ( remove-wrd ( removed-wrd remove-lst )
+        ( cond
+          ( ( and ( null ( rest remove-lst ) )
+            ( eq removed-wrd ( first remove-lst ) ) ) ( values ) )
+          ( ( null ( rest remove-lst ) ) ( first remove-lst ) )
+          ( ( eq removed-wrd ( first remove-lst ) )
+            ( rest remove-lst ) )
+          ( T ( cons ( first remove-lst )
+            ( remove-wrd removed-wrd ( rest remove-lst ) ) ) )
+        )
+      )
+    )
+    ( cond
+      ( ( null lst ) ( list wrd ) )
+      ( ( not ( is-found wrd lst ) ) ( cons wrd lst ) )
+      ( ( eq wrd ( first lst ) ) lst )
+      ( T ( cons wrd ( remove-wrd wrd lst ) ) )
+    )
+  )
 )
 
 ;; test plan for move-to-front:

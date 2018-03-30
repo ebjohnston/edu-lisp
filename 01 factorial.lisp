@@ -14,7 +14,7 @@
 
 ( defun factorial ( num )
     ( cond
-		( ( or ( not ( integerp num ) ) ( < num 0 ) ) NIL )
+        ( ( or ( not ( integerp num ) ) ( < num 0 ) ) NIL )
         ( ( or ( = num 0 ) ( = num 1 ) ) 1 )
         ( T ( * num ( factorial ( - num 1 ) ) ) )
     )
